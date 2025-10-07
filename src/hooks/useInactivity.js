@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 
-const useInactivity = (timeout = 60) => {
+const useInactivity = (timeout = 60, onTimeout = null) => {
   const [inactive, setInactive] = useState(false);
   const [counter, setCounter] = useState(timeout);
 
   useEffect(() => {
     let timer;
+
     const resetTimer = () => {
       setInactive(false);
       setCounter(timeout);
@@ -15,7 +16,11 @@ const useInactivity = (timeout = 60) => {
 
     const tick = () => {
       setCounter(prev => {
-        if (prev <= 1) setInactive(true);
+        if (prev <= 1) {
+          setInactive(true);
+          if (onTimeout) onTimeout(); // call logout function
+          return 0;
+        }
         return prev - 1;
       });
     };
@@ -30,9 +35,14 @@ const useInactivity = (timeout = 60) => {
       window.removeEventListener('keydown', handleActivity);
       clearInterval(timer);
     };
-  }, [timeout]);
+  }, [timeout, onTimeout]);
 
-  return { inactive, counter };
+  const resetInactivity = () => {
+    setInactive(false);
+    setCounter(timeout);
+  };
+
+  return { inactive, counter, resetInactivity };
 };
 
 export default useInactivity;

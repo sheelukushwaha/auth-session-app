@@ -6,7 +6,7 @@ import '../App.css';
 
 const Dashboard = () => {
   const { user, logout } = useContext(AuthContext);
-  const { inactive, counter } = useInactivity(60);
+  const { inactive, counter, resetInactivity } = useInactivity(60, logout);
 
   return (
     <div className="dashboard-container">
@@ -15,13 +15,21 @@ const Dashboard = () => {
 
       {inactive && (
         <div className="inactivity-dialog">
-          <p>Inactive for a while. Logging out in {counter}s</p>
-          <button onClick={() => window.location.reload()}>Extend Session</button>
-          <button onClick={logout}>Logout</button>
+          <p>Inactive for a while. Logging out in <strong>{counter}</strong>s</p>
+          <div className="dialog-buttons">
+            <button className="extend-button" onClick={resetInactivity}>
+              Extend Session
+            </button>
+            <button className="logout-button" onClick={logout}>
+              Logout
+            </button>
+          </div>
         </div>
       )}
 
-      <button className="logout-button" onClick={logout}>Logout</button>
+      <div className="button-row">
+        <button className="logout-button" onClick={logout}>Logout</button>
+      </div>
     </div>
   );
 };
