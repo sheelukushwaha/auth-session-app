@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-developer-projects/auth-session-app/static/css/main.eb0fac76.css",
+    "main.js": "/react-developer-projects/auth-session-app/static/js/main.97d7a3bc.js",
+    "static/js/453.47c4d316.chunk.js": "/react-developer-projects/auth-session-app/static/js/453.47c4d316.chunk.js",
+    "index.html": "/react-developer-projects/auth-session-app/index.html",
+    "main.eb0fac76.css.map": "/react-developer-projects/auth-session-app/static/css/main.eb0fac76.css.map",
+    "main.97d7a3bc.js.map": "/react-developer-projects/auth-session-app/static/js/main.97d7a3bc.js.map",
+    "453.47c4d316.chunk.js.map": "/react-developer-projects/auth-session-app/static/js/453.47c4d316.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb0fac76.css",
+    "static/js/main.97d7a3bc.js"
+  ]
+}
